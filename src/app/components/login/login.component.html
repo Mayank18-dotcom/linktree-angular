@@ -1,0 +1,105 @@
+<body>
+  <div class="container">
+      <div class="forms-container">
+      <div class="signin-signup">
+          <form action="#" class="sign-in-form">
+          <h2 class="title">Login</h2>
+          <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" [(ngModel)]="loginUserData.username" name="username"/>
+          </div>
+          <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" [(ngModel)]="loginUserData.password" name="password"/>
+          </div>
+          <input type="submit" value="Login" (click)="check()" class="btn solid"/>
+          </form>
+      </div>
+      </div>
+      <div class="panels-container">
+      <div class="panel left-panel">
+          <div class="content">
+          <h3>New here ?</h3>
+          <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+          </p>
+          <button class="btn transparent" id="sign-up-btn" routerLink="/signup">
+              Sign up
+          </button>
+          </div>
+          <img src="../../../assets/log.svg" class="image" alt="" />
+      </div>
+      </div>
+  </div>
+  </body>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-500">
+  <ngx-spinner></ngx-spinner>
+  <div class="container-shadow"></div>
+  <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-6 headclass">
+    <div class="flex items-center flex-shrink-0 text-white mr-6"> 
+      <a  href="https://inceptionwave.in/home">
+        <img class="fill-current h-15 w-15 mr-5" width="54" height="54" viewBox="0 0 54 54" src="../../../assets/logo.png"  style="margin-top: 5px;">
+      </a>
+        
+        <span class="font-semibold text-xl tracking-tight">Inception Wave</span>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+        <a routerLink="/" class="block lg:inline-block lg:mt-0 text-white hover:text-white mr-4 tp hover:no-underline">
+            HOME
+        </a>
+        <a (click)="allog()" class="block lg:inline-block lg:mt-0 text-white hover:text-white mr-4 tp" style="cursor: pointer;">
+            DASHBOARD
+        </a>
+        <a routerLink="/aboutus" class="block lg:inline-block lg:mt-0 text-white hover:text-white mr-4 tp hover:no-underline">
+            ABOUT US
+        </a>
+        
+        </div>
+    </div>
+</nav>  
+    <br><br><br><br><br>
+    <form class="w-full max-w-lg ddashh">
+        <h2 class=" text-center text-3xl leading-9 font-extrabold text-gray-900 ">
+            Log In - Intern
+        </h2>
+        <br><br>
+        <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+              <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="grid-password">
+                Username
+              </label>
+              <input class="appearance-none block w-full bg-gray-800 text-gray-200 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-500 focus:border-gray-500" name="username" type="text" placeholder="User" [(ngModel)]="loginUserData.username" required>
+        </div>
+        <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2" for="grid-password">
+              Password
+            </label>
+            <input class="appearance-none block w-full bg-gray-800 text-gray-200 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-500 focus:border-gray-500" name="password" type="password" placeholder="******************"  [(ngModel)]="loginUserData.password" required>
+        </div>
+		<div style="text-align: center;" class="bg-blue-500"><br><button (click)="check()" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-10 rounded-lg text-xl">Log In</button><br></div>
+      </form>
+      <h4 class=" text-center text-xl leading-9 font-extrabold text-gray-900 bg-blue-500">
+        <br>
+          <a routerLink="/signup" class="hover:no-underline hover:text-white">I Dont't have account</a> 
+        <br><br>
+      </h4>
+      <footer class="text-gray-100 body-font bg-gray-900 footer">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <img class="fill-current h-15 w-15" width="54" height="54" viewBox="0 0 54 54" src="../../../assets/logo.png" style="margin-top: 5px;">
+          </a>
+          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0">© 2020 Inception Wave</p>
+        </div>
+    </footer>
+</body>
+</html> -->
