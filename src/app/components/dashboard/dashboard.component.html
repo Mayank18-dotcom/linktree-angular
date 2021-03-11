@@ -1,1 +1,8 @@
-<p>This is {{username}}'s dashboard ! Anyone can access it</p>
+<div *ngIf = "checkaccount == null">
+    <p>There is no such link</p>
+</div>
+<div *ngIf = "checkaccount != null">
+    <p>This is {{checkaccount}}'s dashboard ! Anyone can view it</p>
+    <p *ngIf="username !== parseusername">Welcome! You are not admin ! You can NOT make changes</p>
+    <p *ngIf="username === parseusername">Welcome {{username}}. You are admin ! You can make changes</p>
+</div>

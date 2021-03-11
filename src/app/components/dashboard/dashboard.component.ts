@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import {AppService} from '../../app.service'
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +8,25 @@ import {AppService} from '../../app.service'
 })
 export class DashboardComponent implements OnInit {
   username : any;
-  constructor(private service : AppService) { }
-
+  parseusername : any;
+  data:any;
+  checkaccount:any;
+  constructor(private service : AppService,public router:ActivatedRoute,public rt:Router) {
+    this.router.params.subscribe(params=>{
+      this.parseusername = params.username;
+    })
+   }
   ngOnInit() {
     this.username =  JSON.parse(this.service.getUser()); 
-    console.log(this.username)
+    this.service.mainlink(this.parseusername).subscribe(res=>{
+      this.data = res[0];
+      console.log(this.data);
+      if(this.data !== undefined){
+        this.checkaccount = this.data.username;
+      }
+    })
+    
+    // console.log(this.username)
+    // console.log(this.parseusername)
   }
 }

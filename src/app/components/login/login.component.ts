@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
         (res:any) => {
           window.localStorage.setItem('token', res.token)
           window.localStorage.setItem('un', JSON.stringify(res.user.username))
+          window.localStorage.setItem('id', JSON.stringify(res.user._id))
           setTimeout(() => {
-            this.router.navigate(['/dashboard',res.user.username])
+            this.router.navigate(['',res.user.username])
             // this.spinner.hide();
           }, 4000);
         },

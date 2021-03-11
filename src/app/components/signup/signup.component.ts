@@ -35,9 +35,10 @@ export class SignupComponent implements OnInit {
       .subscribe(
         (res:any) =>{
           window.localStorage.setItem('token',res.token)
+          window.localStorage.setItem('id', JSON.stringify(res.user._id))
           window.localStorage.setItem('un', JSON.stringify(res.user.username))
           setTimeout(() => {
-            this.router.navigate(['/dashboard',res.user.username])
+            this.router.navigate(['',res.user.username])
             // this.spinner.hide();
           }, 4000);
         },
