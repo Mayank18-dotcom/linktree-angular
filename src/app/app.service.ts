@@ -5,8 +5,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppService {
   constructor(private http : HttpClient){}
-  url : string = "https://linktree-app.herokuapp.com";
-  // url : string = "http://localhost:3000";
+  // url : string = "https://linktree-app.herokuapp.com";
+  url : string = "http://localhost:3000";
   
   signup(user)
   {
@@ -22,6 +22,12 @@ export class AppService {
   getUser()
   {
     return window.localStorage.getItem('un')
+  }
+  addLink(newlink,userid){
+    return this.http.post(this.url+'/sublinks/create/'+userid,newlink)
+  }
+  delLink(id){
+    return this.http.get(this.url+'/sublinks/delete/'+id);
   }
   getToken()
   {

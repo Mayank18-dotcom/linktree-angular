@@ -10,13 +10,15 @@ import { AuthGuard } from "./auth.guard";
 import { TokenInterceptorService } from "./token-interceptor.service";
 // import {NgxSpinnerModule} from 'ngx-spinner';
 import { FormsModule } from '@angular/forms';
+import { AdmindashComponent } from './components/admindash/admindash.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdmindashComponent
   ],
   imports: [
     BrowserModule,

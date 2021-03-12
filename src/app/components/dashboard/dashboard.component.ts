@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {AppService} from '../../app.service'
+import * as mainfun from "../../../scripts.js";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
     })
    }
   ngOnInit() {
+    // mainfun.myTest();
     this.username =  JSON.parse(this.service.getUser()); 
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
