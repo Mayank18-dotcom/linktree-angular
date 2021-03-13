@@ -19,8 +19,8 @@ export class AdmindashComponent implements OnInit {
   sublinks:any;
   linkdata = new Newlink();
   userid:any;
+  linkid:any;
   no_of_links:number;
-  delLink:any;
   constructor(private rt:Router , private router : ActivatedRoute, private service : AppService,private _location: Location) { 
     this.router.params.subscribe(params=>{
       this.parseusername = params.username;
@@ -39,9 +39,7 @@ export class AdmindashComponent implements OnInit {
       $('.js-menu-toggle').click(function(e) {
     
         var $this = $(this);
-    
-        
-    
+
         if ( $('body').hasClass('show-sidebar') ) {
           $('body').removeClass('show-sidebar');
           $this.removeClass('active');
@@ -68,13 +66,16 @@ export class AdmindashComponent implements OnInit {
       window.location.reload();
     })
   }
-  getdeleteLink(link){
-    this.delLink = link;
+  editLink(){
+    this.service.editLink(this.linkdata,this.linkid).subscribe(res=>{
+      window.location.reload();
+    })
+  }
+  getLinkId(link){
+    this.linkid = link;
   }
   deleteLink(){
-    console.log(this.delLink);
-    this.service.delLink(this.delLink).subscribe(result=>{
-      console.log(result);
+    this.service.delLink(this.linkid).subscribe(result=>{
       window.location.reload();
     })
   }
@@ -86,6 +87,16 @@ export class AdmindashComponent implements OnInit {
     }
     else{
       this.postLink()
+    }
+  }
+  updatelink(){
+    if(this.linkdata.name==null){
+      alert("Link Title is Empty")
+    }else if(this.linkdata.link==null){
+      alert("URL is Empty")
+    }
+    else{
+      this.editLink()
     }
   }
   gotolink(link)

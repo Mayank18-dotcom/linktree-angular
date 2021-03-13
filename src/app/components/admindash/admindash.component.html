@@ -11,23 +11,23 @@
 
         <div class="profile">
           <img src="../../../assets/person_profile.jpg" alt="Image" class="img-fluid">
-          <h3 class="name">Debby Williams</h3>
+          <h3 class="name">{{parseusername}}</h3>
         </div>
 
         <div class="counter d-flex justify-content-center">
           <!-- <div class="row justify-content-center"> -->
             <div class="col">
-              <strong class="number">892</strong>
+              <strong class="number">{{no_of_links}}</strong>
               <span class="number-label">Links</span>
             </div>
             <div class="col">
               <strong class="number">22.5k</strong>
               <span class="number-label">TotalCount</span>
             </div>
-            <div class="col">
+            <!-- <div class="col">
               <strong class="number">150</strong>
               <span class="number-label">Count Today</span>
-            </div>
+            </div> -->
           <!-- </div> -->
         </div>
         
@@ -72,7 +72,6 @@
 										<th></th>
 										<th>Link Name</th>
 										<th>Link URL</th>
-										<th>No. of times link visited</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -81,15 +80,14 @@
 										<td></td>
 										<td>{{data.name}}</td>
 										<td><a style="cursor: pointer;" (click)="gotolink(data.link)">{{data.link}}</a></td>
-										<td>{{data.count}}</td>
 										<td>
-											<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-											<a href="#deleteEmployeeModal" (click)="getdeleteLink(data._id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+											<a href="#editEmployeeModal" (click)="getLinkId(data._id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+											<a href="#deleteEmployeeModal" (click)="getLinkId(data._id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-							<div class="clearfix">
+							<!-- <div class="clearfix">
 								<div class="hint-text">Showing <b>-</b> out of <b>{{no_of_links}}</b> entries</div>
 								<ul class="pagination">
 									<li class="page-item disabled"><a href="#">Previous</a></li>
@@ -100,7 +98,7 @@
 									<li class="page-item"><a href="#" class="page-link">5</a></li>
 									<li class="page-item"><a href="#" class="page-link">Next</a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 					</div>         
                 </div>
@@ -142,16 +140,16 @@
 								<div class="modal-body">					
 									<div class="form-group">
 										<label>Link Name</label>
-										<input type="text" class="form-control" required>
+										<input type="text" class="form-control" name="name" [(ngModel)]="linkdata.name">
 									</div>
 									<div class="form-group">
 										<label>Link URL</label>
-										<input type="text" class="form-control" required>
+										<input type="text" class="form-control" name="link" [(ngModel)]="linkdata.link">
 									</div>					
 								</div>
 								<div class="modal-footer">
 									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-									<input type="submit" class="btn btn-info" value="Save">
+									<input type="submit" class="btn btn-info" (click)="updatelink()" value="Save">
 								</div>
 							</form>
 						</div>
@@ -182,16 +180,16 @@
             </div>
             <div class="col-md-3">
               <div class="row">
-                <div class="card">
+                <div class="card" style="width: 100%;border-radius: 25px;border-color: black;border-width: 12px;margin-top: 0px;">
                   <div class="card-body">
 
 	<span id="userName">View of your links</span>
-    <img id="userPhoto" src="../../../assets/perfil.jpg" alt="User Photo">
+    <img id="userPhoto" src="https://avatars.githubusercontent.com/u/59336406?s=460&u=b9e7f5b3bb56dd7798ed8701ee2cb3a6fb2b356a&v=4" alt="User Photo">
 
     <span id="userName">{{parseusername}}</span>
 
     <div id="links">
-        <a *ngFor = "let data of sublinks" class="link" (click)="gotolink(data.link)" style="border-radius: 25px;cursor: pointer;"><i
+        <a *ngFor = "let data of sublinks" class="link" (click)="gotolink(data.link)" style="border-radius: 10px;cursor: pointer;"><i
                 class="fa fa-globe" aria-hidden="true" style="padding-right: 2px;"></i> {{data.name}}</a>
     </div>
 
