@@ -16,8 +16,10 @@ export class LoginComponent implements OnInit {
   loginUserData = new User();
   yes:any;
   yess:any;
+  loader = false;
   constructor(private service:AppService,public router:Router) { }
   loginUser () {
+    this.loader = true;
     // this.spinner.show();
     setTimeout(()=>{
       this.service.login(this.loginUserData)
@@ -27,7 +29,8 @@ export class LoginComponent implements OnInit {
           window.localStorage.setItem('un', JSON.stringify(res.user.username))
           window.localStorage.setItem('id', JSON.stringify(res.user._id))
           setTimeout(() => {
-            this.router.navigate(['',res.user.username])
+            this.router.navigate(['/admin/',res.user.username])
+            this.loader = false;
             // this.spinner.hide();
           }, 4000);
         },
@@ -35,12 +38,14 @@ export class LoginComponent implements OnInit {
           if(err instanceof HttpErrorResponse){
             if(err.status === 400){
               console.log(err)
+              this.loader = false;
               alert(err.error);
               // this.spinner.hide();
             }
           }
           if(err instanceof HttpErrorResponse) {
             if(err.status === 401){
+              this.loader = false;
               alert(err.error);
               // this.spinner.hide();
             }

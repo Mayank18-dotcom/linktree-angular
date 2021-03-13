@@ -1,15 +1,20 @@
-<body>
+<body *ngIf="loader">
+  <h1 class="pldr">
+      <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="10000"></circle-progress>
+  </h1>
+</body>
+<body *ngIf="!loader">
   <div class="container">
       <div class="forms-container">
       <div class="signin-signup">
           <form action="#" class="sign-in-form">
           <h2 class="title">Login</h2>
           <div class="input-field">
-              <i class="fas fa-user"></i>
+              <i class="fa fa-user"></i>
               <input type="text" placeholder="Username" [(ngModel)]="loginUserData.username" name="username"/>
           </div>
           <div class="input-field">
-              <i class="fas fa-lock"></i>
+              <i class="fa fa-lock"></i>
               <input type="password" placeholder="Password" [(ngModel)]="loginUserData.password" name="password"/>
           </div>
           <input type="submit" value="Login" (click)="check()" class="btn solid"/>
