@@ -16,6 +16,7 @@ export class User {
 })
 export class SignupComponent implements OnInit {
   registerUserData = new User();
+  loader = false;
   checkmail=/^([a-z 0-9 \.-]+)@([a-z 0-9 -]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
   constructor(private service:AppService,public router:Router) { }
 
@@ -30,6 +31,7 @@ export class SignupComponent implements OnInit {
     return re.test(str);
   }
   registerUser(){
+    this.loader = true;
     setTimeout(()=>{
       this.service.signup(this.registerUserData)
       .subscribe(
@@ -38,7 +40,8 @@ export class SignupComponent implements OnInit {
           window.localStorage.setItem('id', JSON.stringify(res.user._id))
           window.localStorage.setItem('un', JSON.stringify(res.user.username))
           setTimeout(() => {
-            this.router.navigate(['',res.user.username])
+            this.router.navigate(['/admin/',res.user.username])
+            this.loader = false;
             // this.spinner.hide();
           }, 4000);
         },
@@ -47,6 +50,7 @@ export class SignupComponent implements OnInit {
             if(err.status === 400){
               console.log(err)
               alert("Username already exists!");
+              this.loader = false;
               // this.spinner.hide();
             }
           }
