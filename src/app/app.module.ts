@@ -11,6 +11,7 @@ import { TokenInterceptorService } from "./token-interceptor.service";
 // import {NgxSpinnerModule} from 'ngx-spinner';
 import { FormsModule } from '@angular/forms';
 import { AdmindashComponent } from './components/admindash/admindash.component';
+import {NgCircleProgressModule} from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,18 @@ import { AdmindashComponent } from './components/admindash/admindash.component';
     AppRoutingModule,
     // NgxSpinnerModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgCircleProgressModule.forRoot({
+      percent:100,
+      animation:true,
+      radius:50,
+      outerStrokeWidth:8,
+      innerStrokeWidth:4,
+      titleColor: "black",
+      outerStrokeColor:"rgba(107, 114, 128, var(--tw-bg-opacity))",
+      innerStrokeColor:"black",
+      animationDuration:300
+    })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthGuard,

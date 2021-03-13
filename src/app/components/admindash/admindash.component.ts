@@ -21,6 +21,7 @@ export class AdmindashComponent implements OnInit {
   userid:any;
   linkid:any;
   no_of_links:number;
+  loader = true;
   constructor(private rt:Router , private router : ActivatedRoute, private service : AppService,private _location: Location) { 
     this.router.params.subscribe(params=>{
       this.parseusername = params.username;
@@ -31,34 +32,31 @@ export class AdmindashComponent implements OnInit {
   }
   
   ngOnInit() {
-
-    $(function() {
-
-      'use strict';
-    
-      $('.js-menu-toggle').click(function(e) {
-    
-        var $this = $(this);
-
-        if ( $('body').hasClass('show-sidebar') ) {
-          $('body').removeClass('show-sidebar');
-          $this.removeClass('active');
-        } else {
-          $('body').addClass('show-sidebar');	
-          $this.addClass('active');
-        }
-    
-        e.preventDefault();
-    
-      });
-    });
-
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
       this.sublinks = this.data.sublinks;
       this.no_of_links = this.sublinks.length;
-      console.log(this.sublinks);
-      console.log(this.userid);
+      $(function() {
+
+        'use strict';
+      
+        $('.js-menu-toggle').click(function(e) {
+      
+          var $this = $(this);
+  
+          if ( $('body').hasClass('show-sidebar') ) {
+            $('body').removeClass('show-sidebar');
+            $this.removeClass('active');
+          } else {
+            $('body').addClass('show-sidebar');	
+            $this.addClass('active');
+          }
+      
+          e.preventDefault();
+      
+        });
+      });
+      this.loader = false;
     })
   }
   postLink(){
