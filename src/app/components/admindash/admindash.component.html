@@ -1,6 +1,6 @@
 <body *ngIf="loader">
     <h1 class="pldr">
-        <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="10000"></circle-progress>
+        <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
     </h1>
 </body>
 <body *ngIf="!loader">
@@ -81,8 +81,8 @@
 										<td>{{data.name}}</td>
 										<td><a style="cursor: pointer;" (click)="gotolink(data.link)">{{data.link}}</a></td>
 										<td>
-											<a href="#editEmployeeModal" (click)="getLinkId(data._id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-											<a href="#deleteEmployeeModal" (click)="getLinkId(data._id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+											<a href="#editEmployeeModal" (click)="getLinkInfo(data._id,data.name,data.link)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+											<a href="#deleteEmployeeModal" (click)="getLinkInfo(data._id,data.name,data.link)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 										</td>
 									</tr>
 								</tbody>
@@ -102,6 +102,7 @@
 						</div>
 					</div>         
                 </div>
+				<!--ADD SECTION-->
                 <div id="addEmployeeModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -128,7 +129,7 @@
 						</div>
 					</div>
 				</div>
-				
+				<!--EDIT SECTION-->
 				<div id="editEmployeeModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -140,11 +141,11 @@
 								<div class="modal-body">					
 									<div class="form-group">
 										<label>Link Name</label>
-										<input type="text" class="form-control" name="name" [(ngModel)]="linkdata.name">
+										<input type="text" class="form-control" value="{{linkname}}" name="name" [(ngModel)]="linkdata.name">
 									</div>
 									<div class="form-group">
 										<label>Link URL</label>
-										<input type="text" class="form-control" name="link" [(ngModel)]="linkdata.link">
+										<input type="text" class="form-control" value="{{linkurl}}" name="link" [(ngModel)]="linkdata.link">
 									</div>					
 								</div>
 								<div class="modal-footer">
@@ -155,7 +156,7 @@
 						</div>
 					</div>
 				</div>
-				
+				<!--DEL SECTION-->
 				<div id="deleteEmployeeModal" class="modal fade">
 					<div class="modal-dialog">
 						<div class="modal-content">

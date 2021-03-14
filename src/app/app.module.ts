@@ -36,7 +36,7 @@ import {NgCircleProgressModule} from 'ng-circle-progress';
       titleColor: "black",
       outerStrokeColor:"rgba(107, 114, 128, var(--tw-bg-opacity))",
       innerStrokeColor:"black",
-      animationDuration:300
+      animationDuration:500
     })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

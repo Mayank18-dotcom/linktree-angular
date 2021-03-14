@@ -20,6 +20,8 @@ export class AdmindashComponent implements OnInit {
   linkdata = new Newlink();
   userid:any;
   linkid:any;
+  linkname:any;
+  linkurl:any;
   no_of_links:number;
   loader = true;
   constructor(private rt:Router , private router : ActivatedRoute, private service : AppService,private _location: Location) { 
@@ -69,8 +71,11 @@ export class AdmindashComponent implements OnInit {
       window.location.reload();
     })
   }
-  getLinkId(link){
+  getLinkInfo(link,name,url){
     this.linkid = link;
+    this.linkname=name;
+    this.linkurl = url;
+    console.log(name,url);
   }
   deleteLink(){
     this.service.delLink(this.linkid).subscribe(result=>{
@@ -89,13 +94,11 @@ export class AdmindashComponent implements OnInit {
   }
   updatelink(){
     if(this.linkdata.name==null){
-      alert("Link Title is Empty")
-    }else if(this.linkdata.link==null){
-      alert("URL is Empty")
+      this.linkdata.name = this.linkname;
+    }if(this.linkdata.link==null){
+      this.linkdata.link = this.linkurl;
     }
-    else{
-      this.editLink()
-    }
+    this.editLink()
   }
   gotolink(link)
   {
