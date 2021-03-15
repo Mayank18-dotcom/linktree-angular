@@ -32,6 +32,12 @@ export class AppService {
   editLink(newlink,linkid){
     return this.http.post(this.url+'/sublinks/update/'+linkid,newlink)
   }
+  updatemaincount(user){
+    return this.http.get(this.url+'/mainlink/countinc/'+user);
+  }
+  updatesublinkcount(user){
+    return this.http.get(this.url+'/sublink/countinc/'+user);
+  }
   getToken()
   {
     return window.localStorage.getItem('token')

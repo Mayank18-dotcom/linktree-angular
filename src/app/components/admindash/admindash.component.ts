@@ -38,6 +38,7 @@ export class AdmindashComponent implements OnInit {
       this.data = res[0];
       this.sublinks = this.data.sublinks;
       this.no_of_links = this.sublinks.length;
+      console.log(this.data)
       $(function() {
 
         'use strict';

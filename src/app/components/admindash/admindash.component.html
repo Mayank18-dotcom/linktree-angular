@@ -21,11 +21,11 @@
           <!-- <div class="row justify-content-center"> -->
             <div class="col">
               <strong class="number">{{no_of_links}}</strong>
-              <span class="number-label">Links</span>
+              <span class="number-label">Total sublinks</span>
             </div>
             <div class="col">
-              <strong class="number">22.5k</strong>
-              <span class="number-label">TotalCount</span>
+              <strong class="number">{{data.countmainlink}}</strong>
+              <span class="number-label">Times mainlink visited</span>
             </div>
             <!-- <div class="col">
               <strong class="number">150</strong>
@@ -72,6 +72,7 @@
 										<th></th>
 										<th>Link Name</th>
 										<th>Link URL</th>
+										<th>Count</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -80,6 +81,7 @@
 										<td></td>
 										<td>{{data.name}}</td>
 										<td><a style="cursor: pointer;" (click)="gotolink(data.link)">{{data.link}}</a></td>
+										<td>{{data.count}}</td>
 										<td>
 											<a href="#editEmployeeModal" (click)="getLinkInfo(data._id,data.name,data.link)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 											<a href="#deleteEmployeeModal" (click)="getLinkInfo(data._id,data.name,data.link)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

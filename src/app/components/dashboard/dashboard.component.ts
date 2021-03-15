@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {AppService} from '../../app.service'
-import * as mainfun from "../../../scripts.js";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,6 +11,7 @@ export class DashboardComponent implements OnInit {
   parseusername : any;
   data:any;
   checkaccount:any;
+  sublinks:any;
   constructor(private service : AppService,public router:ActivatedRoute,public rt:Router) {
     this.router.params.subscribe(params=>{
       this.parseusername = params.username;
@@ -22,13 +22,20 @@ export class DashboardComponent implements OnInit {
     this.username =  JSON.parse(this.service.getUser()); 
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
+      this.sublinks = this.data.sublinks;
       console.log(this.data);
       if(this.data !== undefined){
         this.checkaccount = this.data.username;
       }
     })
-    
-    // console.log(this.username)
-    // console.log(this.parseusername)
+    this.service.updatemaincount(this.parseusername).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  gotolink(id,link)
+  {
+    window.open(link);
+    this.service.updatesublinkcount(id).subscribe(res=>{
+    })
   }
 }
