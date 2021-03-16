@@ -6,7 +6,12 @@
     <p *ngIf="username !== parseusername">Welcome! You are not admin ! You can NOT make changes</p>
     <p *ngIf="username === parseusername">Welcome {{username}}. You are admin ! You can make changes</p>
 </div> -->
-<table class="table table-striped table-hover">
+<body *ngIf="loader">
+    <h1 class="pldr">
+        <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
+    </h1>
+</body>
+<table *ngIf="!loader" class="table table-striped table-hover">
     <thead>
         <tr>
             <th></th>

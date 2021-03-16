@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   data:any;
   checkaccount:any;
   sublinks:any;
+  loader = true;
   constructor(private service : AppService,public router:ActivatedRoute,public rt:Router) {
     this.router.params.subscribe(params=>{
       this.parseusername = params.username;
@@ -23,13 +24,12 @@ export class DashboardComponent implements OnInit {
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
       this.sublinks = this.data.sublinks;
-      console.log(this.data);
       if(this.data !== undefined){
         this.checkaccount = this.data.username;
       }
+      this.loader = false;
     })
     this.service.updatemaincount(this.parseusername).subscribe(res=>{
-      console.log(res);
     })
   }
   gotolink(id,link)
