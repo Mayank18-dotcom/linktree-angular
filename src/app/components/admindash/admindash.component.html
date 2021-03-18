@@ -2,6 +2,7 @@
     <h1 class="pldr">
         <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
     </h1>
+	<br><br><br><br><br><br><br>
 </body>
 <body *ngIf="!loader">
     <aside class="sidebar">
@@ -36,11 +37,11 @@
         
         <div class="nav-menu">
           <ul>
-            <li class="active"><a href="#"><span class="icon-home mr-3"></span>Feed</a></li>
+            <li class="active"><a routerLink="/admin/{{parseusername}}"><span class="icon-home mr-3"></span>Feed</a></li>
             <li><a href="#"><span class="icon-search2 mr-3"></span>Explore</a></li>
             <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li>
             <li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
-            <li><a href="#"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
+            <li><a routerLink="/stats/{{parseusername}}"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
             <li><a href="#"><span class="icon-sign-out mr-3"></span>Sign out</a></li>
           </ul>
         </div>

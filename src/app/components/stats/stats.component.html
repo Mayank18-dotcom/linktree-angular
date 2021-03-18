@@ -1,0 +1,81 @@
+<body>
+    <aside class="sidebar">
+      <div class="toggle">
+        <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+      </div>
+      <div class="side-inner">
+
+        <div class="profile">
+          <img src="https://avatars.githubusercontent.com/u/59336406?s=460&u=b9e7f5b3bb56dd7798ed8701ee2cb3a6fb2b356a&v=4" alt="Image" class="img-fluid">
+          <h3 class="name">{{parseusername}}</h3>
+        </div>
+
+        <div class="counter d-flex justify-content-center">
+          <!-- <div class="row justify-content-center"> -->
+            <div class="col">
+              <strong class="number">{{no_of_links}}</strong>
+              <span class="number-label">Total sublinks</span>
+            </div>
+            <div class="col">
+              <strong class="number">{{data.countmainlink}}</strong>
+              <span class="number-label">Visit Count Total</span>
+            </div>
+            <div class="col">
+              <strong class="number">{{data.dailycountmainlink}}</strong>
+              <span class="number-label">Visit Count Today</span>
+            </div>
+          <!-- </div> -->
+        </div>
+        
+        <div class="nav-menu">
+            <ul>
+                <li><a routerLink="/admin/{{parseusername}}"><span class="icon-home mr-3"></span>Feed</a></li>
+                <li><a href="#"><span class="icon-search2 mr-3"></span>Explore</a></li>
+                <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li>
+                <li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
+                <li class="active"><a routerLink="/stats/{{parseusername}}"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
+                <li><a href="#"><span class="icon-sign-out mr-3"></span>Sign out</a></li>
+              </ul>
+        </div>
+      </div>
+    </aside>
+    <br>
+    <div class="row" style="width: 100%;">
+      <div class="col-1"></div>
+      <div class="col-3">
+          <br><br>
+          <div class="row">
+              <div class="card baseBlock">
+                  <div class="card-body">
+                      <h4 class="card-title">Daily Mainlink Count</h4>
+                      <br>
+                      <h1 class="card-title" style="font-family: fantasy;font-size: 50px;">{{dailycountmainlink}}</h1>
+                  </div>
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="card baseBlock">
+                  <div class="card-body">
+                      <h4 class="card-title">Total Mainlink Count</h4>
+                      <br>
+                      <h1 class="card-title" style="font-family:fantasy;font-size: 50px;">{{countmainlink}}</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-7">
+          <br><br>
+          <div class="row" style="margin-top: 10px;">
+              <div class="card baseBlock" style="height: 625px;width:100%;">
+                  <div class="card-body">
+                      <h4 class="card-title" style="font-size:25px;"><b>Stats</b></h4>
+                      <canvas id="myChart" width="500" height="400"></canvas>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br><br>

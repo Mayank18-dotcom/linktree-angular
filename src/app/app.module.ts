@@ -12,6 +12,7 @@ import { TokenInterceptorService } from "./token-interceptor.service";
 import { FormsModule } from '@angular/forms';
 import { AdmindashComponent } from './components/admindash/admindash.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgCircleProgressModule} from 'ng-circle-progress';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    AdmindashComponent
+    AdmindashComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
