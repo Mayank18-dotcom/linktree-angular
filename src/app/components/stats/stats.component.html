@@ -1,3 +1,9 @@
+<!-- <body *ngIf="loader">
+  <h1 class="pldr">
+      <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
+  </h1>
+  <br><br><br><br><br><br><br>
+</body> -->
 <body>
     <aside class="sidebar">
       <div class="toggle">
@@ -19,11 +25,11 @@
               <span class="number-label">Total sublinks</span>
             </div>
             <div class="col">
-              <strong class="number">{{data.countmainlink}}</strong>
+              <strong class="number">{{countmainlink}}</strong>
               <span class="number-label">Visit Count Total</span>
             </div>
             <div class="col">
-              <strong class="number">{{data.dailycountmainlink}}</strong>
+              <strong class="number">{{dailycountmainlink}}</strong>
               <span class="number-label">Visit Count Today</span>
             </div>
           <!-- </div> -->
@@ -44,7 +50,7 @@
     <br>
     <div class="row" style="width: 100%;">
       <div class="col-1"></div>
-      <div class="col-3">
+      <div class="col-3 cards" id="card1">
           <br><br>
           <div class="row">
               <div class="card baseBlock">
@@ -65,10 +71,20 @@
                   </div>
               </div>
           </div>
+          <br>
+          <div class="row stats">
+              <div class="card baseBlock">
+                  <div class="card-body">
+                      <h4 class="card-title">Statistics of sublinks</h4>
+                      <br>
+                      <h4 class="" style="font-family:'Times New Roman', Times, serif;font-size: 20px;" *ngFor="let l of sublinks">{{l.name}} : {{l.count}}</h4>
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="col-7">
+      <div class="col-7" >
           <br><br>
-          <div class="row" style="margin-top: 10px;">
+          <div class="row" style="margin-top: 10px;" id="card2">
               <div class="card baseBlock" style="height: 625px;width:100%;">
                   <div class="card-body">
                       <h4 class="card-title" style="font-size:25px;"><b>Stats</b></h4>

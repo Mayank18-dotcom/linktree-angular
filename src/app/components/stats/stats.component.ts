@@ -16,8 +16,8 @@ export class StatsComponent implements OnInit {
   sublinks:any;
   sublink_names=[];
   sublink_counts=[];
-  countmainlink:any;
-  dailycountmainlink:any;
+  countmainlink=0;
+  dailycountmainlink=0;
   loader = true;
   no_of_links:any;
   constructor(private service : AppService,public router:ActivatedRoute,public rt:Router) {
@@ -30,9 +30,9 @@ export class StatsComponent implements OnInit {
     this.username =  JSON.parse(this.service.getUser()); 
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
-      console.log(this.data)
-      this.sublinks = this.data.sublinks;
+      // console.log(this.data);
       if(this.data !== undefined){
+        this.sublinks = this.data.sublinks;
         this.checkaccount = this.data.username;
         this.countmainlink=this.data.countmainlink;
         this.dailycountmainlink = this.data.dailycountmainlink;
@@ -40,10 +40,17 @@ export class StatsComponent implements OnInit {
         this.getLables();
         this.getCount();
         this.plotgraph();
+        this.loader = false;
       }
       // console.log(this.sublinks);
       this.loader = false;
     })
+    $(document).ready(function(){
+      if ($(window).width() < 514) {
+        $('#card1').removeClass('col-3');
+        $('#card1').addClass('row');
+      }
+    });
     $(function() {
 
       'use strict';
@@ -59,9 +66,7 @@ export class StatsComponent implements OnInit {
           $('body').addClass('show-sidebar');	
           $this.addClass('active');
         }
-    
         e.preventDefault();
-    
       });
     });
     // this.service.updatemaincount(this.parseusername).subscribe(res=>{
@@ -76,7 +81,7 @@ export class StatsComponent implements OnInit {
     this.sublinks.forEach(element => {
       this.sublink_counts.push(element.count)
     });
-    console.log(this.sublinks);
+    // console.log(this.sublinks);
   }
   plotgraph(){
     var ctx = document.getElementById("myChart");
