@@ -105,4 +105,8 @@ export class AdmindashComponent implements OnInit {
   {
     window.open(link);
   }
+  gotomainlink()
+  {
+    window.open('https://linktree-angular.vercel.app/'+this.parseusername);
+  }
 }

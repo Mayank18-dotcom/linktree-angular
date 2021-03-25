@@ -1,18 +1,18 @@
-<!-- <div *ngIf = "checkaccount == null">
-    <p>There is no such link</p>
-</div>
-<div *ngIf = "checkaccount != null">
-    <p>This is {{checkaccount}}'s dashboard ! Anyone can view it</p>
-    <p *ngIf="username !== parseusername">Welcome! You are not admin ! You can NOT make changes</p>
-    <p *ngIf="username === parseusername">Welcome {{username}}. You are admin ! You can make changes</p>
-</div> -->
 <body *ngIf="loader">
     <h1 class="pldr">
         <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="15000"></circle-progress>
     </h1>
     <br><br><br><br><br><br><br>
 </body>
-<table *ngIf="!loader" class="table table-striped table-hover">
+<body *ngIf="!loader">
+    <!-- <i onclick="moonstarts(this)" class="fa fa-moon-o fa-2x night_mode"></i> -->
+    <img id="userPhoto" src="https://i1.wp.com/tim-koertgen.de/wp-content/uploads/2020/10/avatar-placeholder.jpg?resize=768%2C768&ssl=1" alt="User Photo">
+    <span id="userName">{{parseusername}}</span>
+    <div id="links">
+        <a class="link" *ngFor = "let data of sublinks" (click)="gotolink(data._id,data.link)" style="border-radius: 25px;cursor: pointer;">{{data.name}}</a>
+    </div>
+</body>
+<!-- <table *ngIf="!loader" class="table table-striped table-hover">
     <thead>
         <tr>
             <th></th>
@@ -27,4 +27,4 @@
             <td><a style="cursor: pointer;" (click)="gotolink(data._id,data.link)">{{data.link}}</a></td>
         </tr>
     </tbody>
-</table>
+</table> -->

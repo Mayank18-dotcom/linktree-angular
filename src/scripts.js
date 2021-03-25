@@ -1,25 +1,34 @@
-// export function myTest(){
-//     $('.js-menu-toggle').click(function(e) {
-//         var $this = $(this);  
-//         if ( $('body').hasClass('show-sidebar') ) {
-//             $('body').removeClass('show-sidebar');
-//             $this.removeClass('active');
-//         } else {
-//             $('body').addClass('show-sidebar');	
-//             $this.addClass('active');
-//         }
-//         e.preventDefault();
-  
-//     });
-//     // const sign_in_btn = document.querySelector("#sign-in-btn");
-//     // const sign_up_btn = document.querySelector("#sign-up-btn");
-//     // const container = document.querySelector(".container");
+function moonstarts(e) {
+    if (e.classList.contains("fa-moon-o")) { //se tem lua
+        e.classList.remove("fa-moon-o"); //remove classe icone lua
+        e.classList.add("fa-sun-o"); //coloca classedo sol
+        e.style.color = "rgb(225, 225, 0)";
+        document.body.style.background = 'rgb(10, 10, 10)';
+        document.querySelector('#userName').style.color = '#fff';
 
-//     // sign_up_btn.addEventListener("click", () => {
-//     // container.classList.add("sign-up-mode");
-//     // });
+        let links = document.querySelectorAll('.link');
+        // Pega apenas o primeiro do array
+        links[0].style.filter = 'grayscale(100%)';
+        // pega todos
+        for (let i = 0; i < links.length; i++) {
+            links[i].style.filter = 'grayscale(100%)';
+        }
 
-//     // sign_in_btn.addEventListener("click", () => {
-//     // container.classList.remove("sign-up-mode");
-//     // });
-// }
+    } else { //senão
+        e.classList.remove("fa-sun-o"); //remove classe icone lua
+        e.classList.add("fa-moon-o"); //coloca classedo sol
+        e.style.color = "#585858";
+        document.body.style.background = 'rgb(243, 242, 242)';
+        document.querySelector('#links').style.color = 'rgb(100, 240, 242)';
+        document.querySelector('#userName').style.color = 'rgb(99, 99, 99)';
+
+        let links = document.querySelectorAll('.link');
+        // Pega apenas o primeiro do array
+        links[0].style.filter = 'grayscale(0%)';
+        // pega todos
+        for (let i = 0; i < links.length; i++) {
+            links[i].style.filter = 'grayscale(0%)';
+        }
+    }
+
+}
