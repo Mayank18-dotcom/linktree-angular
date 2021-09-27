@@ -6,8 +6,9 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AdmindashComponent } from "./components/admindash/admindash.component";
 import { StatsComponent } from "./components/stats/stats.component";
 import { AuthGuard } from "./auth.guard";
+import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
-  {path:'', redirectTo: '/login',pathMatch:'full'},
+  {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:':username',component:DashboardComponent},

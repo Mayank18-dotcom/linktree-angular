@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AdmindashComponent } from './components/admindash/admindash.component';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import { StatsComponent } from './components/stats/stats.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StatsComponent } from './components/stats/stats.component';
     SignupComponent,
     DashboardComponent,
     AdmindashComponent,
-    StatsComponent
+    StatsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
