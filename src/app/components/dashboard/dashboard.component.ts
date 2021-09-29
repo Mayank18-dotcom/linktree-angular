@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   data:any;
   checkaccount:any;
   sublinks:any;
+  image:any;
+  imageUrl:any;
   loader = true;
   constructor(private service : AppService,public router:ActivatedRoute,public rt:Router) {
     this.router.params.subscribe(params=>{
@@ -24,6 +26,8 @@ export class DashboardComponent implements OnInit {
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
       this.sublinks = this.data.sublinks;
+      this.image = this.data.img;
+      this.imageUrl = 'data:image/png;base64,' + this.image;
       if(this.data !== undefined){
         this.checkaccount = this.data.username;
       }

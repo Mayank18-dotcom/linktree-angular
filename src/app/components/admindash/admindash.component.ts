@@ -8,6 +8,9 @@ export class Newlink{
   public name: any;
   public link :any;
 }
+export class NewImg {
+  public image: any;
+}
 @Component({
   selector: 'app-admindash',
   templateUrl: './admindash.component.html',
@@ -18,11 +21,17 @@ export class AdmindashComponent implements OnInit {
   data:any;
   sublinks:any;
   linkdata = new Newlink();
+  newimg = new NewImg();
   userid:any;
   linkid:any;
   linkname:any;
   linkurl:any;
   no_of_links:number;
+  img:any;
+  image:any;
+  imageUrl:any;
+  ImageBaseData:any;
+  
   loader = true;
   constructor(private rt:Router , private router : ActivatedRoute, private service : AppService,private _location: Location) { 
     this.router.params.subscribe(params=>{
@@ -34,10 +43,13 @@ export class AdmindashComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.ImageBaseData = 'https://i.ibb.co/1sr471r/preview.png';
     this.service.mainlink(this.parseusername).subscribe(res=>{
       this.data = res[0];
       this.sublinks = this.data.sublinks;
       this.no_of_links = this.sublinks.length;
+      this.image = this.data.img;
+      this.imageUrl = this.image;
       console.log(this.data)
       $(function() {
 
@@ -60,6 +72,26 @@ export class AdmindashComponent implements OnInit {
         });
       });
       this.loader = false;
+    })
+  }
+  handleFileInput(files: FileList) {
+    var me = this;
+    let file = files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      // console.log(reader.result);
+      me.ImageBaseData=reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
+  editProficPic(){
+    this.newimg.image = this.ImageBaseData;
+      console.log(this.newimg.image);
+    this.service.updatePic(this.parseusername, this.newimg).subscribe(res=>{
+      window.location.reload();
     })
   }
   postLink(){
@@ -107,6 +139,6 @@ export class AdmindashComponent implements OnInit {
   }
   gotomainlink()
   {
-    window.open('https://linktree-angular.vercel.app/'+this.parseusername);
+    window.open('https://weblink-analysis.vercel.app/'+this.parseusername);
   }
 }

@@ -6,7 +6,7 @@
 </body>
 <body *ngIf="!loader">
     <!-- <i onclick="moonstarts(this)" class="fa fa-moon-o fa-2x night_mode"></i> -->
-    <img id="userPhoto" src="https://i1.wp.com/tim-koertgen.de/wp-content/uploads/2020/10/avatar-placeholder.jpg?resize=768%2C768&ssl=1" alt="User Photo">
+    <img id="userPhoto" src={{imageUrl}} alt="User Photo" style="width: 120px;height: 120px;">
     <span id="userName">{{parseusername}}</span>
     <div id="links">
         <a class="link" *ngFor = "let data of sublinks" (click)="gotolink(data._id,data.link)" style="border-radius: 25px;cursor: pointer;">{{data.name}}</a>
