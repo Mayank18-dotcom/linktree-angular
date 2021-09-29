@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
       this.data = res[0];
       this.sublinks = this.data.sublinks;
       this.image = this.data.img;
-      this.imageUrl = 'data:image/png;base64,' + this.image;
+      this.imageUrl = this.image;
       if(this.data !== undefined){
         this.checkaccount = this.data.username;
       }
