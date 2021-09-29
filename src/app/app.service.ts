@@ -5,8 +5,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppService {
   constructor(private http : HttpClient){}
-  //url : string = "https://linktree-app.herokuapp.com";
-  url : string = "http://localhost:3000";
+  url : string = "https://linktree-app.herokuapp.com";
+  // url : string = "http://localhost:3000";
   
   signup(user)
   {
