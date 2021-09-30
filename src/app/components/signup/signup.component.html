@@ -1,3 +1,5 @@
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+<!-- <meta name="google-signin-client_id" content="1045295688564-run4hqjs8a39i8va0d2376dit5kaejlb.apps.googleusercontent.com"> -->
 <body *ngIf="loader">
   <h1 class="pldr">
       <circle-progress *ngIf="loader" [animation]="true" [animationDuration]="10000"></circle-progress>
@@ -9,6 +11,8 @@
       <div class="signin-signup">
           <form class="sign-in-form">
               <h2 class="title">Sign up</h2>
+              <div class="g-signin2" data-onsuccess="onSignIn"></div>
+              <!-- {{guser | json}} -->
               <div class="input-field">
                   <i class="fa fa-user"></i>
                   <input type="text" placeholder="Username" [(ngModel)]="registerUserData.username" name="username"/>
@@ -26,8 +30,10 @@
                 <input type="password" placeholder="Confirm Password" [(ngModel)]="registerUserData.cnfpassword" name="cnfpassword"/>
             </div>
               <input type="submit" class="btn" (click)="check()" value="Sign up" />
+              <br>
           </form>
       </div>
+      
       </div>
       <div class="panels-container">
       <div class="panel left-panel">
@@ -45,8 +51,7 @@
       </div>
       </div>
   </div>
-  </body>
-
+</body>
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>

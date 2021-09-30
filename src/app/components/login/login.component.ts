@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, NgZone, OnInit, Renderer2 } from '@angular/core';
 import {AppService} from '../../app.service';
 import { Router } from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -7,6 +7,9 @@ export class User {
   public username: any;
   public password: any;
 }
+import uniqueRandom from 'unique-random';
+import { Meta } from "@angular/platform-browser";
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +20,18 @@ export class LoginComponent implements OnInit {
   yes:any;
   yess:any;
   loader = false;
-  constructor(private service:AppService,public router:Router) { }
+  guser;
+  constructor(private service:AppService,public router:Router, 
+    private metaservice : Meta,
+     ngZone : NgZone,
+    @Inject(DOCUMENT) private doc : Document,
+    private render : Renderer2) { 
+    window['onSignIn'] = user => ngZone.run(
+      ()=>{
+        this.afterSignIn(user);
+      }
+    )
+  }
   loginUser () {
     this.loader = true;
     // this.spinner.show();
@@ -65,6 +79,21 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit() {
-  }
+    this.metaservice.addTags([
+      {name : 'google-signin-clinet-id', content : '1045295688564-run4hqjs8a39i8va0d2376dit5kaejlb.apps.googleusercontent.com'}
+    ]);
 
+    let script = this.render.createElement('script');
+    script.src = 'https://apis.google.com/js/platform.js';
+    script.defer = true;
+    script.async = true;
+    this.render.appendChild(document.body,script);
+  }
+  afterSignIn(googleUser){
+    this.guser = googleUser;
+    this.loginUserData.username = this.guser.dt["Se"];
+    this.loginUserData.password = this.guser.dt["Ot"];
+    console.log(this.guser);
+    this.loginUser();
+  }
 }

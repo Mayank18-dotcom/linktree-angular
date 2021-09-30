@@ -9,6 +9,7 @@
       <div class="signin-signup">
           <form action="#" class="sign-in-form">
           <h2 class="title">Login</h2>
+          <div class="g-signin2" data-onsuccess="onSignIn" style="display: none;"></div>
           <div class="input-field">
               <i class="fa fa-user"></i>
               <input type="text" placeholder="Username" [(ngModel)]="loginUserData.username" name="username"/>
